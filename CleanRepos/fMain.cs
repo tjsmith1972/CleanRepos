@@ -64,6 +64,8 @@ namespace CleanRepos
 
         private void btnPreview_ClickAsync(object sender, EventArgs e)
         {
+            dirSizes = 0;
+            rLog.Text = "";
             _ = PreviewCleanAsync();
         }
         async Task PreviewCleanAsync()
@@ -78,17 +80,17 @@ namespace CleanRepos
         }
         async Task LogSubFolders(string rootFolder, bool delete)
         {
-            var folderName = ""; 
+            var folderName = "";
             var delArr = txtFoldersToDelete.Text.ToLower().Split(',');
             var di = new DirectoryInfo(rootFolder);
             folderName = di.Name;
-            if (Array.IndexOf(delArr, folderName.Trim().ToLower())>-1)
+            if (Array.IndexOf(delArr, folderName.Trim().ToLower()) > -1)
             {
                 long dirSize = await Task.Run(() => di.EnumerateFiles("*", SearchOption.AllDirectories).Sum(file => file.Length));
                 dirSizes += dirSize;
                 rLog.Text += "DELETING..." + (dirSize / 1024 / 1024).ToString() + "mb" + Environment.NewLine +
                     rootFolder + Environment.NewLine;
-                if(delete) di.Delete(true);
+                if (delete) di.Delete(true);
             }
             else
             {
@@ -107,6 +109,8 @@ namespace CleanRepos
 
         private void btnGo_Click(object sender, EventArgs e)
         {
+            dirSizes = 0;
+            rLog.Text = "";
             _ = CleanAsync();
         }
         async Task CleanAsync()
@@ -118,6 +122,22 @@ namespace CleanRepos
             }
             rLog.Text += string.Format("Total size reclaimed: {0}mb", (dirSizes / 1024 / 1024).ToString());
 
+        }
+
+        private void btnFolBrowser_Click(object sender, EventArgs e)
+        {
+            using (var fbd = new FolderBrowserDialog())
+            {
+                fbd.Description = "Select the root folder";
+                fbd.ShowNewFolderButton = false;
+                fbd.RootFolder = Environment.SpecialFolder.Desktop;
+                if (fbd.ShowDialog() == DialogResult.OK)
+                {
+                    txtRootFolder.Text = fbd.SelectedPath;
+                    Properties.Settings.Default["RootFolder"] = fbd.SelectedPath;
+                    Properties.Settings.Default.Save();
+                }
+            }
         }
     }
 }

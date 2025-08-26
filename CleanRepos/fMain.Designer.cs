@@ -51,6 +51,7 @@
             // 
             splitContainer1.Dock = DockStyle.Top;
             splitContainer1.Location = new Point(0, 0);
+            splitContainer1.Margin = new Padding(2);
             splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -60,16 +61,18 @@
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(btnFolBrowser);
-            splitContainer1.Size = new Size(800, 31);
-            splitContainer1.SplitterDistance = 731;
+            splitContainer1.Size = new Size(622, 22);
+            splitContainer1.SplitterDistance = 568;
+            splitContainer1.SplitterWidth = 3;
             splitContainer1.TabIndex = 0;
             // 
             // txtRootFolder
             // 
             txtRootFolder.Dock = DockStyle.Fill;
             txtRootFolder.Location = new Point(0, 0);
+            txtRootFolder.Margin = new Padding(2);
             txtRootFolder.Name = "txtRootFolder";
-            txtRootFolder.Size = new Size(731, 29);
+            txtRootFolder.Size = new Size(568, 23);
             txtRootFolder.TabIndex = 0;
             txtRootFolder.KeyUp += txtRootFolder_KeyUp;
             // 
@@ -78,16 +81,19 @@
             btnFolBrowser.Dock = DockStyle.Fill;
             btnFolBrowser.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnFolBrowser.Location = new Point(0, 0);
+            btnFolBrowser.Margin = new Padding(2);
             btnFolBrowser.Name = "btnFolBrowser";
-            btnFolBrowser.Size = new Size(65, 31);
+            btnFolBrowser.Size = new Size(51, 22);
             btnFolBrowser.TabIndex = 0;
             btnFolBrowser.Text = "...";
             btnFolBrowser.UseVisualStyleBackColor = true;
+            btnFolBrowser.Click += btnFolBrowser_Click;
             // 
             // splitContainer2
             // 
             splitContainer2.Dock = DockStyle.Fill;
-            splitContainer2.Location = new Point(0, 31);
+            splitContainer2.Location = new Point(0, 22);
+            splitContainer2.Margin = new Padding(2);
             splitContainer2.Name = "splitContainer2";
             splitContainer2.Orientation = Orientation.Horizontal;
             // 
@@ -101,42 +107,47 @@
             splitContainer2.Panel2.Controls.Add(txtFoldersToDelete);
             splitContainer2.Panel2.Controls.Add(btnGo);
             splitContainer2.Panel2.Controls.Add(btnPreview);
-            splitContainer2.Size = new Size(800, 419);
-            splitContainer2.SplitterDistance = 371;
+            splitContainer2.Size = new Size(622, 299);
+            splitContainer2.SplitterDistance = 264;
+            splitContainer2.SplitterWidth = 3;
             splitContainer2.TabIndex = 2;
             // 
             // rLog
             // 
             rLog.Dock = DockStyle.Fill;
             rLog.Location = new Point(0, 0);
+            rLog.Margin = new Padding(2);
             rLog.Name = "rLog";
-            rLog.Size = new Size(800, 371);
+            rLog.Size = new Size(622, 264);
             rLog.TabIndex = 2;
             rLog.Text = "";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(157, 12);
+            label1.Location = new Point(122, 9);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(128, 21);
+            label1.Size = new Size(96, 15);
             label1.TabIndex = 4;
             label1.Text = "Folders To Delete";
             // 
             // txtFoldersToDelete
             // 
-            txtFoldersToDelete.Location = new Point(301, 9);
+            txtFoldersToDelete.Location = new Point(234, 6);
+            txtFoldersToDelete.Margin = new Padding(2);
             txtFoldersToDelete.Name = "txtFoldersToDelete";
-            txtFoldersToDelete.Size = new Size(270, 29);
+            txtFoldersToDelete.Size = new Size(211, 23);
             txtFoldersToDelete.TabIndex = 3;
             txtFoldersToDelete.Text = "node_modules,packages,bin,obj";
             // 
             // btnGo
             // 
             btnGo.Dock = DockStyle.Right;
-            btnGo.Location = new Point(725, 0);
+            btnGo.Location = new Point(564, 0);
+            btnGo.Margin = new Padding(2);
             btnGo.Name = "btnGo";
-            btnGo.Size = new Size(75, 44);
+            btnGo.Size = new Size(58, 32);
             btnGo.TabIndex = 2;
             btnGo.Text = "Clean";
             btnGo.UseVisualStyleBackColor = true;
@@ -146,8 +157,9 @@
             // 
             btnPreview.Dock = DockStyle.Left;
             btnPreview.Location = new Point(0, 0);
+            btnPreview.Margin = new Padding(2);
             btnPreview.Name = "btnPreview";
-            btnPreview.Size = new Size(127, 44);
+            btnPreview.Size = new Size(99, 32);
             btnPreview.TabIndex = 0;
             btnPreview.Text = "Preview Clean";
             btnPreview.UseVisualStyleBackColor = true;
@@ -155,11 +167,12 @@
             // 
             // fMain
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(622, 321);
             Controls.Add(splitContainer2);
             Controls.Add(splitContainer1);
+            Margin = new Padding(2);
             Name = "fMain";
             Text = "Clean Repos (Point this at your projects folders to delete the bloat!)";
             splitContainer1.Panel1.ResumeLayout(false);
